@@ -10,6 +10,13 @@
 * https://yoppa.org/teu_media16/6980.html
 * http://macromarionette.com/computergraphics/cg9.html
 
-## mic_test
+## mic_sample
 
-Not working... Maybe Mac OS Catalina needs to grant permission to Processing.
+* Downgrade to Processing-3.5.3 to grant access to microphone
+    * After the access is granted, you can upgrade the version to 3.5.4
+* https://qiita.com/zono_Bianchi/items/d03162da279fece5e29f
+* cannot access microphone from vscode... run from terminal
+
+```
+$ processing-java --sketch=<PATH/TO/mic_sample> --run
+```

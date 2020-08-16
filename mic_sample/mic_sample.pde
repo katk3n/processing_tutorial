@@ -2,7 +2,7 @@ import ddf.minim.analysis.*;
 import ddf.minim.*;
 
 Minim minim;
-AudioPlayer player;
+AudioInput in;
 FFT fft;
 int fftSize;
 
@@ -15,9 +15,8 @@ void setup() {
   minim = new Minim(this);
   fftSize = 512;
 
-  player = minim.loadFile("/Users/kentaktwo/Desktop/impro10.mp3", fftSize);
-  player.loop();
-  fft = new FFT(player.bufferSize(), player.sampleRate());
+  in = minim.getLineIn(Minim.STEREO, 512);
+  fft = new FFT(in.bufferSize(), in.sampleRate());
 }
 
 void draw() {
@@ -26,12 +25,9 @@ void draw() {
   // specSize() gets spectrum width
   int specSize = fft.specSize();
 
-  // player.mix: mix both left & right sound source
-  // player.left: use only left sound source
-  // player.right: use only right sound source
-  fft.forward(player.left);
+  fft.forward(in.left);
   for (int i = 0; i < specSize; i++) {
-    float h = map(i, 0, specSize, 180, 270);
+    float h = map(i, 0, specSize, 0, 360);
     // getBand() gets sound volume
     float ellipseSize = map(fft.getBand(i), 0, fftSize/16, 0, width);
     float x = map(i, 0, specSize, width/2, 0);
@@ -40,9 +36,9 @@ void draw() {
     ellipse(x, height/2, ellipseSize, ellipseSize);
   }
 
-  fft.forward(player.right);
+  fft.forward(in.right);
   for (int i = 0; i < specSize; i++) {
-    float h = map(i, 0, specSize, 180, 270);
+    float h = map(i, 0, specSize, 0, 360);
     // getBand() gets sound volume
     float ellipseSize = map(fft.getBand(i), 0, fftSize/16, 0, width);
     float x = map(i, 0, specSize, width/2, width);
@@ -54,7 +50,7 @@ void draw() {
 }
 
 void stop() {
-  player.close();
+  in.close();
   minim.stop();
   super.stop();
 }
