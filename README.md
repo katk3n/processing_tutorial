@@ -20,3 +20,8 @@
 ```
 $ processing-java --sketch=<PATH/TO/mic_sample> --run
 ```
+
+## Class references
+* http://code.compartmental.net/minim/javadoc/ddf/minim/AudioSource.html
+* http://code.compartmental.net/minim/javadoc/ddf/minim/AudioPlayer.html
+* http://code.compartmental.net/minim/javadoc/ddf/minim/AudioInput.html
