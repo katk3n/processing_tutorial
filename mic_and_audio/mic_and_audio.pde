@@ -8,7 +8,7 @@ AudioEllipse playerEllipse, micEllipse;
 static final int FFT_SIZE = 512;
 
 void setup() {
-  size(640, 480, P2D);
+  fullScreen(P2D);
   noStroke();
   blendMode(ADD);
   colorMode(HSB, 360, 100, 100, 100);
