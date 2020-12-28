@@ -18,7 +18,7 @@ void setup() {
   in = minim.getLineIn(Minim.STEREO, FFT_SIZE);
   player.loop();
   playerEllipse = new AudioEllipse(player, FFT_SIZE, 0, 180, width/3, 0);
-  micEllipse = new AudioEllipse(in, FFT_SIZE, 180, 360, (width*2)/3, width);
+  micEllipse = new AudioEllipse(in, FFT_SIZE, 0, 4320, (width*2)/3, width);
 }
 
 void draw() {
